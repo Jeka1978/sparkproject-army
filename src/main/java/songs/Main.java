@@ -14,10 +14,8 @@ import static java.util.Arrays.asList;
 public class Main {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Conf.class);
-        JavaSparkContext sc = context.getBean(JavaSparkContext.class);
-        TopWordsService service = context.getBean(TopWordsService.class);
-        JavaRDD<String> rddLines = sc.parallelize(asList("java java java", "scala", "groovy,groovy"));
-        List<String> list = service.topX(rddLines, 1);
+        TextService textService = context.getBean(TextService.class);
+        List<String> list = textService.topX("beatles", 3);
         System.out.println(list);
     }
 }

@@ -2,16 +2,13 @@ package songs;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
+import org.apache.spark.sql.SQLContext;
+import org.springframework.context.annotation.*;
 
 /**
  * @author Evgeny Borisov
  */
 @Configuration
-@ComponentScan
 public class Conf {
 
     @Bean
@@ -26,5 +23,7 @@ public class Conf {
         SparkConf conf = new SparkConf().setAppName("songs");
         return new JavaSparkContext(conf);
     }
+
+
 
 }
